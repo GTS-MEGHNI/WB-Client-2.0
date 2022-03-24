@@ -1,0 +1,11 @@
+{
+    "Authentication": true,
+    "Dashboard": true,
+    "DietPlan": true,
+    "Food": true,
+    "Notification": true,
+    "Payment": true,
+    "Plans": true,
+    "Profile": true,
+    "Subscription": true
+}

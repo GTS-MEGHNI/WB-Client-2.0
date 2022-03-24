@@ -1,0 +1,13 @@
+{
+    "name": "DietPlan",
+    "alias": "dietplan",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\DietPlan\\Providers\\DietPlanServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
