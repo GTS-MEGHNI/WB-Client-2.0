@@ -26,7 +26,8 @@ class CanDeleteOrder
     public function handle(Request $request, Closure $next): mixed
     {
         $order = SubscriptionModel::where(['user_id' => Utility::getUserId()])->first();
-        throw_if($order == null || $order->status != Dictionary::CANCELED_ORDER,
+        throw_if($order === null || 
+            !in_array($order->status, [Dictionary::CANCELED_ORDER, Dictionary::TERMINATED_ORDER]),
             CannotDeleteException::class);
         $request->request->add(['order' => $order]);
         return $next($request);
