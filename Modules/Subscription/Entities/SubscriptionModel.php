@@ -100,7 +100,7 @@ class SubscriptionModel extends Model
     {
         return Utility::array_filter([
             'meta' => Utility::array_filter([
-                'id' => $this->order_id,
+                'id' => $this->id,
                 'createdAt' => $this->created_at->timestamp,
                 'expiresOn' => $this->status == Dictionary::ACTIVE_ORDER ? $this->expired_at->timestamp : null,
             ]),
