@@ -19,7 +19,7 @@ Route::group(['prefix' => 'coaching/subscription', 'middleware' => 'TokenValidat
         ->middleware('CanSubscribeMiddleware');
     Route::post('create', [SubscriptionController::class, 'create'])
         ->middleware('CanSubscribeMiddleware');
-    Route::PATCH('delete', [SubscriptionController::class, 'delete'])
+    Route::delete('delete', [SubscriptionController::class, 'delete'])
         ->middleware('CanDeleteOrder');
     Route::PATCH('cancel', [SubscriptionController::class, 'cancel'])
         ->middleware('CanCancelOrder');
