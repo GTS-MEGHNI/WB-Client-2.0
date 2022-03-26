@@ -2,7 +2,6 @@
 
 namespace App\Exceptions;
 
-use App\Responses;
 use Exception;
 use Illuminate\Http\JsonResponse;
 
@@ -12,7 +11,7 @@ class AlreadyAppliedException extends Exception
     {
         return response()->json([
             'canSubscribe' => false,
-            'message' => Responses::ALREADY_APPLIED
+            'message' => 'ALREADY_SUBSCRIBED'
         ]);
     }
 }
