@@ -13,6 +13,7 @@ use JetBrains\PhpStorm\Pure;
  * @property mixed $duration
  * @property mixed $description
  * @property mixed $price
+ * @property mixed $enabled
  */
 class ProgramPlanModel extends Model
 {
@@ -40,6 +41,7 @@ class ProgramPlanModel extends Model
         return Utility::array_filter([
             'plan' => $this->duration,
             'description' => $this->description,
+            'enabled' => boolval($this->enabled),
             'price' => Utility::currencyFilter($this->price->toArray())
         ]);
     }

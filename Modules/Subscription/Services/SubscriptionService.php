@@ -15,8 +15,8 @@ class SubscriptionService
     /**
      * @return array
      * @throws Throwable
+     * @noinspection PhpArrayShapeAttributeCanBeAddedInspection
      */
-    #[ArrayShape(['details' => "mixed", 'found' => "bool"])]
     public function get(): array
     {
         $order = $this->getUserLatestOrder();
