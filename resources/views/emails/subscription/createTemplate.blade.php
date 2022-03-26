@@ -65,12 +65,13 @@
         .plan-link {
             text-decoration: none;
             background-color: #32b3dd;
-            color: #fff;
+            color: #fff !important;
             padding: 6px 14px;
             display: block;
             margin: 16px 0;
             width: fit-content;
             border-radius: 8px;
+            font-size: 16px;
         }
     </style>
 </head>
