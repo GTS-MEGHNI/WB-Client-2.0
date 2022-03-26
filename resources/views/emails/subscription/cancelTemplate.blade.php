@@ -89,8 +89,8 @@
             <td>
                 <table class="email-body">
                     <tr>
-                        <td>
-                            <span class="text description-text">La souscription N° {{ $subscription_id }} viens d'être annulée</span>
+                        <td style="text-align: center">
+                            <span class="text description-text">La souscription N° <strong>{{ $subscription_id }}</strong> viens d'être annulée</span>
                         </td>
                     </tr>
                 </table>
