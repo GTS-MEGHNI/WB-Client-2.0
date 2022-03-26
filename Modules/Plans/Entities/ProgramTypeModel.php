@@ -36,7 +36,8 @@ class ProgramTypeModel extends Model
 
     public function plans(): HasMany
     {
-        return $this->hasMany(ProgramPlanModel::class, 'model_id', 'id');
+        return $this->hasMany(ProgramPlanModel::class, 'model_id', 'id')
+            ->orderBy('duration');
     }
 
     public function toArray(): array
