@@ -35,7 +35,8 @@ class SubscriptionCreatedMail extends Mailable
             ->from(env('MAIL_USERNAME_NO_REPLY'))
             ->subject('Nouvelle souscription')
             ->view('emails.subscription.createTemplate', [
-                'url' => env('BACK_OFFICE_URL'). '/dashboard/coaching/subscriptions/'.$this->subscription_id
+                'logo_url' => env('APP_URL') . '/logo.png',
+                'subscription_url' => env('BACK_OFFICE_URL') . '/dashboard/coaching/subscriptions/' . $this->subscription_id
             ]);
     }
 }

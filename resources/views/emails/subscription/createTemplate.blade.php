@@ -72,7 +72,6 @@
             width: fit-content;
             border-radius: 8px;
         }
-
     </style>
 </head>
 
@@ -82,7 +81,7 @@
     <table class="logo-body">
         <tr>
             <td>
-                <img src="logo.png" alt="logo" style="margin: 30px 0">
+                <img src={{ $logo_url }} alt="logo" style="margin: 30px 0">
             </td>
         </tr>
         <tr>
@@ -96,7 +95,7 @@
                     </tr>
                     <tr>
                         <td style="display: block; text-align: -webkit-center;">
-                            <a class="plan-link" href="">Voir la souscription</a>
+                            <a class="plan-link" href={{ $subscription_url }}>Voir la souscription</a>
                         </td>
                     </tr>
                 </table>
