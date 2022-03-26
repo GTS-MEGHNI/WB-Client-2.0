@@ -20,6 +20,6 @@ Route::group(['prefix' => 'payments', 'middleware' => ['TokenValidation', 'HaveO
         Route::post('baridimob', [PaymentController::class, 'baridimob']);
     });
     Route::group(['prefix' => '{paymentId}'], function() {
-        Route::post('', [PaymentController::class, 'get']);
+        Route::get('', [PaymentController::class, 'get']);
     });
 });
