@@ -9,6 +9,7 @@ use Illuminate\Support\Arr;
 use Modules\Dashboard\Entities\DiaryActivityModel;
 use Modules\Dashboard\Entities\DiaryFeelingModel;
 use Modules\Dashboard\Entities\DiaryModel;
+use Modules\Subscription\Entities\SubscriptionModel;
 use Modules\Subscription\Traits\Order;
 use Throwable;
 
@@ -41,7 +42,7 @@ class DiaryService
     {
         $page = $payload['page'];
         $length = $payload['length'];
-        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription()]);
+        dd(Utility::getUserOngoingSubscription()->diaries);
         Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
