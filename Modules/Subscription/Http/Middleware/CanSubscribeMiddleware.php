@@ -31,6 +31,7 @@ class CanSubscribeMiddleware
 
     private function classroomIsFull(): bool
     {
+        dd(env('MAX_STUDENTS'));
         return DB::table('classroom.students')->count() === env('MAX_STUDENTS');
     }
 
