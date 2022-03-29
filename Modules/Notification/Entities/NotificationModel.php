@@ -45,9 +45,4 @@ class NotificationModel extends Model
             'link' => $this->link
         ]);
     }
-
-    public function getLinkAttribute($value): string
-    {
-        return env('CLIENT_UI_URL') . $value;
-    }
 }

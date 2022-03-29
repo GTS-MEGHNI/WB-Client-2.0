@@ -19,7 +19,10 @@ class NotificationService
         $notifications = NotificationModel::latest()->where([
             'user_id' => Utility::getUserId()
         ]);
-        $new = $notifications->where('new', 1)->count();
+        $new = NotificationModel::where([
+            'user_id' => Utility::getUserId(),
+            'new' => 1
+        ])->count();
         $reach_end = !$notifications->paginate($page_size)->hasMorePages();
         $notifications->paginate($page_size);
         return Utility::remove_array_shape_tag([
