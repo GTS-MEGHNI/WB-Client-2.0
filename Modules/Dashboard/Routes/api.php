@@ -41,7 +41,7 @@ Route::group(['prefix' => 'coaching', 'middleware' => ['TokenValidation', 'Updat
                 Route::get('can-create', [ProgressController::class, 'canCreate']);
                 Route::post('create', [ProgressController::class, 'create'])
                     ->middleware('AlreadyWriteBodyProgress');
-                Route::post('', [ProgressController::class, 'list']);
+                Route::get('', [ProgressController::class, 'list']);
                 /*Route::patch('update', [ProgressController::class, 'update']);
                 Route::patch('delete', [ProgressController::class, 'delete']);*/
             });
