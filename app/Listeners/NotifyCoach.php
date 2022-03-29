@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Modules\Dashboard\Events\BodyProgressSubmitted;
 use Modules\Dashboard\Notifications\SendProgressNotification;
+use Modules\Payment\Emails\PaymentSubmittedEmail;
 use Modules\Payment\Events\PaymentSubmitted;
 use Modules\Payment\Notifications\SendPaymentNotification;
 use Modules\Subscription\Emails\SubscriptionCanceledMail;
@@ -35,18 +36,18 @@ class NotifyCoach
     public function handle(mixed $event)
     {
         if ($event instanceof PaymentSubmitted) {
-            Notification::send(CoachModel::all(),
-                new SendPaymentNotification($event->order_id, $event->payment_method));
+            Mail::to(CoachModel::all()->pluck('email')->toArray())
+                ->send(new PaymentSubmittedEmail($event->order_id,
+                        $event->payment_method)
+                );
         } elseif ($event instanceof BodyProgressSubmitted) {
             Notification::send(CoachModel::all(), new SendProgressNotification());
-        }
-        elseif ($event instanceof SubscriptionCreated) {
+        } elseif ($event instanceof SubscriptionCreated) {
             Mail::to(CoachModel::all()->pluck('email')->toArray())
                 ->send(
                     new SubscriptionCreatedMail($event->order_id)
                 );
-        }
-        elseif ($event instanceof SubscriptionCancelled) {
+        } elseif ($event instanceof SubscriptionCancelled) {
             Mail::to(CoachModel::all()->pluck('email')->toArray())
                 ->send(
                     new SubscriptionCanceledMail($event->order_id)

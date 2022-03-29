@@ -81,15 +81,16 @@ class MealFoodModel extends Model
         return $this->hasOne(MeasurementModel::class, 'food_id', 'id');
     }
 
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
     public function toArray(): array
     {
-        return Utility::remove_array_shape_tag([
+        return [
             'order' => $this->order,
             'type' => $this->getServedFoodType($this->native_food_id),
             'id' => $this->id,
             'nativeId' => $this->native_food_id,
             'hasBeenConsumed' => $this->consumed
-        ]);
+        ];
     }
 
     public function details(): array
