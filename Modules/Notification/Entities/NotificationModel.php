@@ -48,6 +48,6 @@ class NotificationModel extends Model
 
     public function getLinkAttribute($value): string
     {
-        return env('APP_URL') . $value;
+        return env('CLIENT_UI_URL') . $value;
     }
 }
