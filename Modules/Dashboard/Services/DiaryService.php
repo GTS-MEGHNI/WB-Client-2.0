@@ -2,6 +2,7 @@
 
 namespace Modules\Dashboard\Services;
 
+use App\Utility;
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Arr;
@@ -43,7 +44,7 @@ class DiaryService
         Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
-        $diaries = DiaryModel::where(['order_id' => request()->get('order')->order_id]);
+        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription());
         $reach_end = !$diaries->paginate($length)->hasMorePages();
         $diaries->paginate($length);
         if ($diaries->count() == 0)
