@@ -27,6 +27,7 @@ class Auth
             ->setPurpose(Purpose::local())
             ->setIssuedAt()
             ->setNotBefore()
+            ->setNonExpiring(true)
             ->setClaims([
                 'id' => $user->id
             ]);
@@ -75,6 +76,7 @@ class Auth
         $parser = (new Parser())
             ->setKey(self::getEncryptionKey())
             ->setPurpose(Purpose::local())
+            ->setNonExpiring(true)
             ->setAllowedVersions(ProtocolCollection::v4());
         try {
             $parsed_token = $parser->parse($token);
