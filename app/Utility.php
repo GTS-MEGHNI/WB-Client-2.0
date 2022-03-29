@@ -2,8 +2,14 @@
 
 namespace App;
 
+use Modules\Subscription\Entities\SubscriptionModel;
+use Modules\Subscription\Traits\Order;
+use Throwable;
+
 class Utility
 {
+    use Order;
+
     public const EXCLUSIONS = [];
 
     public static function generatePasscode(): string
@@ -59,6 +65,15 @@ class Utility
     public static function getUserId(): string
     {
         return request()->request->get('user_id');
+    }
+
+    /**
+     * @return SubscriptionModel
+     * @throws Throwable
+     */
+    public static function getUserOngoingSubscription(): SubscriptionModel
+    {
+        return (new self())->getUserLatestOrder();
     }
 
 

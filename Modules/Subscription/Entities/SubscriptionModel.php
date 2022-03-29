@@ -29,6 +29,7 @@ use Modules\Dashboard\Entities\DietProgressModel;
  * @property mixed $diet
  * @property mixed $plan
  * @property mixed $type
+ * @property mixed $id
  */
 class SubscriptionModel extends Model
 {

@@ -6,7 +6,6 @@ use App\Responses;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use Illuminate\Validation\Rule;
 use JetBrains\PhpStorm\ArrayShape;
 use Modules\Payment\Rules\PaymentProofRule;
 
@@ -16,8 +15,8 @@ class BasePaymentRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @noinspection PhpArrayShapeAttributeCanBeAddedInspection
      */
-    #[ArrayShape(['data' => "array"])]
     public function rules(): array
     {
         return [

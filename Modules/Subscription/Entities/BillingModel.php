@@ -2,12 +2,13 @@
 
 namespace Modules\Subscription\Entities;
 
-use App\Dictionary;
 use App\Utility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use JetBrains\PhpStorm\Pure;
+use Modules\Payment\Entities\ReceiptPaymentModel;
 use Modules\Subscription\Traits\Order;
 
 /**
@@ -22,14 +23,13 @@ use Modules\Subscription\Traits\Order;
  * @property mixed $price
  * @property mixed $is_paid
  * @property mixed $id
+ * @property mixed $payment
  */
 class BillingModel extends Model
 {
     use HasFactory, Order;
 
     protected $table = 'billings';
-    protected $primaryKey = 'id';
-    public $incrementing = false;
 
     protected $fillable = [];
 
@@ -49,45 +49,16 @@ class BillingModel extends Model
         return $this->hasMany(BillingPriceModel::class, 'billing_id', 'id');
     }
 
+    public function payment() : HasOne {
+        return $this->hasOne(ReceiptPaymentModel::class, 'billing_id');
+    }
+
     #[Pure] public function toArray(): array
     {
         return Utility::array_filter([
             'total' => $this->price->toArray(),
-            'payment' => [
-                'id' => $this->id,
-                'method' => $this->payment_method,
-                'currency' => Dictionary::DINAR_CURRENCY
-            ]
-            /*'payment' => Utility::array_filter([
-                'isPaid' => $this->is_paid,
-                'method' => $this->payment_method,
-                'receipt' => Utility::array_filter([
-                    'url' => $this->proof_path,
-                    'type' => $this->file_type
-                ])
-            ])*/
+            'isPaid' => boolval($this->is_paid),
+            'payment' => $this->payment?->toArray()
         ]);
-    }
-
-    #[Pure] public function details(): array
-    {
-        return Utility::array_filter([
-            'id' => $this->id,
-            'method' => $this->payment_method,
-            'receipt' => Utility::array_filter([
-                'url' => $this->proof_path,
-                'type' => $this->file_type
-            ])
-        ]);
-    }
-
-    public function getProofPathAttribute($value): ?string
-    {
-        return $value == null ? null : env('APP_URL') . '/payments/' . $value;
-    }
-
-    public function getIsPaidAttribute($value): bool
-    {
-        return boolval($value);
     }
 }

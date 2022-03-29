@@ -149,7 +149,6 @@ class CheckoutService extends SubscriptionService
     {
         $billing_row = BillingModel::forceCreate([
             'order_id' => $this->order_id,
-            'id' => uniqid('')
         ]);
         foreach ($this->programPriceData as $item)
             BillingPriceModel::forceCreate([
