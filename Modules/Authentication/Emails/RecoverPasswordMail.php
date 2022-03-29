@@ -37,7 +37,8 @@ class RecoverPasswordMail extends Mailable implements ShouldQueue
             ->view('emails.recover.template', [
                 'passcode' => $this->passcode,
                 'app_name' => env('APP_NAME'),
-                'year' => Carbon::now()->year
+                'year' => Carbon::now()->year,
+                'logo_url' => env('APP_URL') . '/logo.png'
             ]);
     }
 }

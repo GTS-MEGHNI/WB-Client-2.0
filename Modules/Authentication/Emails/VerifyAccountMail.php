@@ -45,7 +45,8 @@ class VerifyAccountMail extends Mailable implements ShouldQueue
                 'app_name' => env('APP_NAME'),
                 'year' => Carbon::now()->year,
                 'ttl' => env('VERIFICATION_TOKEN_TTL') / 60,
-                'sentence' => $this->sentence
+                'sentence' => $this->sentence,
+                'logo_url' => env('APP_URL') . '/logo.png'
             ]);
     }
 }

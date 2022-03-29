@@ -88,7 +88,7 @@
     <table class="logo-body">
         <tr>
             <td>
-                <img src="https://trinatgo.com:61957/e928b3e2-0b1a-4738-9d4c-a9a02f298427/logo.png" alt="logo"
+                <img src={{$logo_url}} alt="logo"
                      style="margin: 30px 0">
             </td>
         </tr>
