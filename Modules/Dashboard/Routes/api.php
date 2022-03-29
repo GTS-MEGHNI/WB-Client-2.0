@@ -24,7 +24,8 @@ Route::group(['prefix' => 'coaching', 'middleware' => ['TokenValidation', 'Updat
 
         Route::group(['prefix' => 'diary'], function () {
             Route::get('can-create', [DiaryController::class, 'canCreate']);
-            Route::post('create', [DiaryController::class, 'create'])->middleware('AlreadyWriteDiary');
+            Route::post('create', [DiaryController::class, 'create']);
+                //->middleware('AlreadyWriteDiary');
             Route::get('', [DiaryController::class, 'list']);
             Route::group(['prefix' => '{diaryId}'], function() {
                 Route::patch('update', [DiaryController::class, 'update']);
