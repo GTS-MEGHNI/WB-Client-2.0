@@ -80,7 +80,7 @@
                     <tr>
                         <td>
                             <span class="text description-text">Le paiment de la  souscription N°
-                                <span style="color: #32b3dd"><strong>{{$subscription_id}}</strong></span> vient d'être soumis en utilisant  <span style="color: #32b3dd"><strong>{{$payment_id}}</strong></span></span>
+                                <span style="color: #32b3dd"><strong>{{$subscription_id}}</strong></span> vient d'être soumis en utilisant  <span style="color: #32b3dd"><strong>{{$payment_method}}</strong></span></span>
                         </td>
                     </tr>
                     <tr>
