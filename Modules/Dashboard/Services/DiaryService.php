@@ -41,12 +41,10 @@ class DiaryService
     {
         $page = $payload['page'];
         $length = $payload['length'];
+        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription()]);
         Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
-        dd(Utility::getUserOngoingSubscription());
-        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription()]);
-        dd($diaries->get());
         $reach_end = !$diaries->paginate($length)->hasMorePages();
         $diaries->paginate($length);
         if ($diaries->count() == 0)
