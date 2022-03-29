@@ -44,7 +44,7 @@ class DiaryService
         Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
-        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription());
+        $diaries = DiaryModel::where(['order_id' => Utility::getUserOngoingSubscription()]);
         $reach_end = !$diaries->paginate($length)->hasMorePages();
         $diaries->paginate($length);
         if ($diaries->count() == 0)
