@@ -42,7 +42,7 @@ class DiaryService
     {
         $page = $payload['page'];
         $length = $payload['length'];
-        dd(Utility::getUserOngoingSubscription()->diaries);
+        $diaries = Utility::getUserOngoingSubscription()->diaries();
         Paginator::currentPageResolver(function () use ($page) {
             return $page;
         });
