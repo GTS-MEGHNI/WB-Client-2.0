@@ -23,18 +23,16 @@ class DeleteRule implements Rule
     /**
      * Determine if the validation rule passes.
      *
-     * @param  string  $attribute
-     * @param  mixed  $value
+     * @param string $attribute
+     * @param mixed $value
      * @return bool
      */
     public function passes($attribute, $value): bool
     {
-        $order = SubscriptionModel::where([
-            'user_id' => Utility::getUserId(),
-            'order_id' => $value
-        ])->first();
+        $order = SubscriptionModel::find($value)->first();
 
-        if($order == null || !in_array($order->status,
+        if ($order == null || $order->user->id !== Utility::getUserId() ||
+            !in_array($order->status,
                 [Dictionary::CANCELED_ORDER, Dictionary::REJECTED_ORDER]))
             return false;
 

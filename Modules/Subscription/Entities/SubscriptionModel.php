@@ -16,6 +16,7 @@ use Modules\Dashboard\Entities\DietProgressModel;
 /**
  * @method static forceCreate(array $array)
  * @method static where(array $array)
+ * @method static find(array $array)
  * @property mixed $status
  * @property mixed $created_at
  * @property mixed $expired_at
