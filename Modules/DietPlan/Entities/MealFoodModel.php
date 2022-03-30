@@ -89,7 +89,7 @@ class MealFoodModel extends Model
             'type' => $this->getServedFoodType($this->native_food_id),
             'id' => $this->id,
             'nativeId' => $this->native_food_id,
-            'hasBeenConsumed' => $this->consumed
+            'hasBeenConsumed' => boolval($this->consumed)
         ];
     }
 
@@ -137,10 +137,4 @@ class MealFoodModel extends Model
             ],
         ];
     }
-
-    public function getConsumedAttribute($value): ?bool
-    {
-        return $value == null ? null : boolval($value);
-    }
-
 }
