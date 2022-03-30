@@ -3,11 +3,9 @@
 namespace Modules\Subscription\Http\Middleware;
 
 use App\Exceptions\CannotDeleteException;
-use App\Utility;
 use Closure;
 use Illuminate\Http\Request;
 use App\Dictionary;
-use Modules\Subscription\Entities\SubscriptionModel;
 use Modules\Subscription\Traits\Order;
 use Throwable;
 
@@ -25,9 +23,7 @@ class CanDeleteOrder
      */
     public function handle(Request $request, Closure $next): mixed
     {
-        $order = SubscriptionModel::where(['user_id' => Utility::getUserId()])
-            ->latest()
-            ->first();
+        $order = $this->getUserLatestOrder();
         throw_if($order === null ||
             !in_array($order->status, [Dictionary::CANCELED_ORDER,
                 Dictionary::TERMINATED_ORDER, Dictionary::REJECTED_ORDER]),
