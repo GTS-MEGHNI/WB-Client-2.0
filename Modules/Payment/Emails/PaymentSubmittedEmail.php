@@ -3,10 +3,11 @@
 namespace Modules\Payment\Emails;
 
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class PaymentSubmittedEmail extends Mailable
+class PaymentSubmittedEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
