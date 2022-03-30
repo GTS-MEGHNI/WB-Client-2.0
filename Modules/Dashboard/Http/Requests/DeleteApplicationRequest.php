@@ -7,7 +7,6 @@ use App\Responses;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use JetBrains\PhpStorm\ArrayShape;
 use Modules\Dashboard\Rules\DeleteRule;
 
 class DeleteApplicationRequest extends FormRequest
@@ -17,12 +16,11 @@ class DeleteApplicationRequest extends FormRequest
      *
      * @return array
      */
-    #[ArrayShape(['id' => "array"])]
     public function rules(): array
     {
         return [
             'id' => ['bail', 'required', 'string', 'regex:' . GlobalRegex::ORDER_ID_PATTERN,
-                'exists:orders.orders,order_id', new DeleteRule()]
+                'exists:Modules\Subscription\Entities\SubscriptionModel,id', new DeleteRule()]
         ];
     }
 

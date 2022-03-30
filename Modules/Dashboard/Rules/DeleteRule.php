@@ -34,7 +34,8 @@ class DeleteRule implements Rule
             'order_id' => $value
         ])->first();
 
-        if($order == null || $order->status != Dictionary::CANCELED_ORDER)
+        if($order == null || !in_array($order->status,
+                [Dictionary::CANCELED_ORDER, Dictionary::REJECTED_ORDER]))
             return false;
 
         return true;
