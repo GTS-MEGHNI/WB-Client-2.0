@@ -129,7 +129,7 @@ class MealFoodModel extends Model
             'photo' => $this->recipe->photos->toArray(),
             'measurement' => (new MeasurementCalculatorService($this))->getMeasurement(),
             'ingredients' => $this->recipe->ingredients->toArray(),
-            'cooking' => $this->recipe->cooking->toArray(),
+            'cooking' => $this->recipe->cooking?->toArray(),
             'notes' => $this->recipe->notes?->toArray(),
             'preparationTime' => [
                 'amount' => null,
