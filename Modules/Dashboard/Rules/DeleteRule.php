@@ -31,6 +31,8 @@ class DeleteRule implements Rule
     {
         $order = SubscriptionModel::find($value);
 
+        dd($order);
+
         if ($order == null || $order->user->id !== Utility::getUserId() ||
             !in_array($order->status,
                 [Dictionary::CANCELED_ORDER, Dictionary::REJECTED_ORDER]))
