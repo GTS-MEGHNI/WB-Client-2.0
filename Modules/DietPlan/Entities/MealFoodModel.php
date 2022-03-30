@@ -4,6 +4,7 @@ namespace Modules\DietPlan\Entities;
 
 use App\Dictionary;
 use App\Utility;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -89,7 +90,7 @@ class MealFoodModel extends Model
             'type' => $this->getServedFoodType($this->native_food_id),
             'id' => $this->id,
             'nativeId' => $this->native_food_id,
-            'hasBeenConsumed' => boolval($this->consumed)
+            'hasBeenConsumed' => $this->consumed
         ];
     }
 
@@ -136,5 +137,11 @@ class MealFoodModel extends Model
                 'unit' => null
             ],
         ];
+    }
+
+    public function consumed() : Attribute {
+        return new Attribute(
+            get: fn($value) => boolval($value)
+        );
     }
 }
