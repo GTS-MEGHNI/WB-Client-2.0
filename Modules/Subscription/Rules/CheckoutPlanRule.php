@@ -33,8 +33,8 @@ class CheckoutPlanRule implements Rule
 
         $diet = $this->meta['program'];
 
-        if ($diet == Dictionary::WEIGHT_GAIN_DIET && $value == Dictionary::ONE_MONTH_SUBSCRIPTION)
-            return false;
+        /*if ($diet == Dictionary::WEIGHT_GAIN_DIET && $value == Dictionary::ONE_MONTH_SUBSCRIPTION)
+            return false;*/
 
         return true;
     }
