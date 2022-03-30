@@ -29,7 +29,7 @@ class DeleteRule implements Rule
      */
     public function passes($attribute, $value): bool
     {
-        $order = SubscriptionModel::find($value)->first();
+        $order = SubscriptionModel::find($value);
 
         if ($order == null || $order->user->id !== Utility::getUserId() ||
             !in_array($order->status,
