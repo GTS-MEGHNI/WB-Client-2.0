@@ -34,8 +34,8 @@ class DeleteRule implements Rule
         dd($order);
 
         if ($order == null || $order->user->id !== Utility::getUserId() ||
-            !in_array($order->status,
-                [Dictionary::CANCELED_ORDER, Dictionary::REJECTED_ORDER]))
+            !in_array($order->status, [Dictionary::CANCELED_ORDER,
+                Dictionary::REJECTED_ORDER]))
             return false;
 
         return true;

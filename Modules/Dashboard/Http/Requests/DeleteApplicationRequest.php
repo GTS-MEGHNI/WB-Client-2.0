@@ -21,7 +21,7 @@ class DeleteApplicationRequest extends FormRequest
     {
         return [
             'id' => ['bail', 'required', 'string', 'regex:' . GlobalRegex::ORDER_ID_PATTERN,
-                'exists:Modules\Subscription\Entities\SubscriptionModel,id', new DeleteRule()]
+                new DeleteRule()]
         ];
     }
 
