@@ -44,7 +44,7 @@ return [
             'timeout' => null,
             'auth_mode' => null,
             'address' => env('MAIL_FROM_ADDRESS_NO_REPLY', 'hello@example.com'),
-            'name' => env('MAIL_FROM_NAME_NO_REPLY', ''),
+            'name' => 'Waheb Benmbarek'
         ],
 
         'no_reply' => [
