@@ -5,6 +5,7 @@ namespace Modules\Subscription\Emails;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SubscriptionCreatedMail extends Mailable
 {
@@ -31,7 +32,7 @@ class SubscriptionCreatedMail extends Mailable
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
-            ->from(env('MAIL_USERNAME_NO_REPLY'), 'Waheb Benmbarek')
+            ->from(env('MAIL_USERNAME_NO_REPLY'))
             ->subject('Nouvelle souscription')
             ->view('emails.subscription.createTemplate', [
                 'logo_url' => env('APP_URL') . '/logo.png',

@@ -34,7 +34,7 @@ class PaymentSubmittedEmail extends Mailable implements ShouldQueue
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
-            ->from(env('MAIL_USERNAME_NO_REPLY'), 'Waheb Benmbarek')
+            ->from(env('MAIL_USERNAME_NO_REPLY'))
             ->subject('Paiement soumis')
             ->view('emails.subscription.paymentTemplate', [
                 'logo_url' => env('APP_URL') . '/logo.png',

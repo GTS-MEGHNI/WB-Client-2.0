@@ -33,7 +33,6 @@ class RecoverPasswordMail extends Mailable implements ShouldQueue
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
-            ->from(env('MAIL_FROM_ADDRESS_NO_REPLY'), 'Waheb Benmbarek')
             ->subject('Demande de changement de mot de passe')
             ->view('emails.recover.template', [
                 'passcode' => $this->passcode,
