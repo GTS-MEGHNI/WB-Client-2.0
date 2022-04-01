@@ -38,6 +38,7 @@ class VerifyAccountMail extends Mailable implements ShouldQueue
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
+            ->from(env('MAIL_FROM_ADDRESS_NO_REPLY'), 'Waheb Benmbarek')
             ->subject('Vérification du compte')
             ->view('emails.activation.template', [
                 'passcode' => $this->passcode,
