@@ -31,7 +31,7 @@ class SubscriptionCanceledMail extends Mailable
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
-            ->from(env('MAIL_USERNAME_NO_REPLY'))
+            ->from(env('MAIL_USERNAME_NO_REPLY'), 'Waheb Benmbarek')
             ->subject('Souscription annulée')
             ->view('emails.subscription.cancelTemplate', [
                 'logo_url' => env('APP_URL') . '/logo.png',
