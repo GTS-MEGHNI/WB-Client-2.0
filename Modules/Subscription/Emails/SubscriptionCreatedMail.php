@@ -32,7 +32,7 @@ class SubscriptionCreatedMail extends Mailable
     {
         return $this
             ->mailer(env('MAIL_MAILER_NO_REPLY'))
-            ->from(env('MAIL_USERNAME_NO_REPLY'))
+            ->from(env('MAIL_USERNAME_NO_REPLY'), 'Waheb Benmbarek')
             ->subject('Nouvelle souscription')
             ->view('emails.subscription.createTemplate', [
                 'logo_url' => env('APP_URL') . '/logo.png',
