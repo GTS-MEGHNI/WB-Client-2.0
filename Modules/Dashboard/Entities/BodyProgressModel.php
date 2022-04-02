@@ -4,7 +4,7 @@ namespace Modules\Dashboard\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 /**
  * @method static forceCreate(array $array)
@@ -29,10 +29,13 @@ class BodyProgressModel extends Model
         //return \Modules\Dashboard\Database\factories\ProgressModelFactory::new();
     }
 
-    public function photos(): HasMany {
-        return $this->hasMany(ProgressTracePhotoModel::class, 'progress_id');
+    public function photos(): HasOne {
+        return $this->hasOne(ProgressTracePhotoModel::class, 'progress_id');
     }
 
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection
+     * @noinspection PhpUndefinedFieldInspection
+     */
     public function toArray(): array
     {
         return [
