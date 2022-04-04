@@ -40,7 +40,7 @@ class GoogleService extends AuthService
     {
         $this->payload = $this->client->verifyIdToken($token);
         User::unguard();
-        User::where(['id' => $this->user->user_id])->update([
+        User::where(['id' => $this->user->id])->update([
             'first_name' => $this->payload['given_name'],
             'last_name' => $this->payload['family_name'],
             'avatar' => $this->payload['picture'],
