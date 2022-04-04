@@ -14,10 +14,12 @@ use Modules\Notification\Http\Controllers\NotificationController;
 |
 */
 
-Route::group(['prefix' => 'notifications', 'middleware' => 'TokenValidation', 'UpdateLastSeenAtMiddleware'], function() {
+Route::group(['prefix' => 'notifications', 'middleware' => 'TokenValidation'], function () {
     Route::get('', [NotificationController::class, 'list']);
-    Route::group(['prefix' => '{notificationId}'], function() {
-        Route::PATCH('mark-as-read', [NotificationController::class, 'check']);
+    Route::group(['prefix' => '{notificationId}'], function () {
+        Route::PATCH('mark-as-read', [NotificationController::class, 'check'])
+            ->middleware('UpdateLastSeenAtMiddleware');
     });
-    Route::PATCH('mark-as-read', [NotificationController::class, 'checkAll']);
+    Route::PATCH('mark-as-read', [NotificationController::class, 'checkAll'])
+        ->middleware('UpdateLastSeenAtMiddleware');
 });
