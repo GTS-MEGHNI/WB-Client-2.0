@@ -30,11 +30,13 @@ class AppAuthService extends AuthService
             throw new HttpResponseException(
                 response()->json(Responses::emptyDebugResponseError(Responses::WRONG_PASSWORD)));
 
+        User::unguard();
         User::where(['id' => $this->user->id])->update([
             'status' => 'connected',
             'last_seen_at' => Carbon::now(),
             'updated_at' => DB::raw('updated_at')
         ]);
+        User::reguard();
     }
 
 
