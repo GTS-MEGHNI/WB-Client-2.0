@@ -24,11 +24,11 @@ class Responses
     public const INVALID_INSTAGRAM_LINK = 'Le lien Instagram n\'est pas valide. Veuillez choisir un autre';
     public const FAILED_BILLING = 'Failed to find the proper plan price';
     public const GENERAL_ERROR_FR = 'Une erreur inattendue s\'est produite, veuillez réessayer plus tard.';
-    public const USING_FACEBOOK_ACCOUNT = 'Vous avez déjà créé un compte Jexury en utilisant Facebook. Veuillez vous connecter à votre compte Jexury existant en utilisant Facebook.';
-    public const USING_GOOGLE_ACCOUNT = 'Vous avez déjà créé un compte Jexury en utilisant Google. Veuillez vous connecter à votre compte Jexury existant en utilisant Google.';
-    public const GOOGLE_LOGIN_NO_ACCOUNT = 'Vous n\'avez pas de compte Google enregistré. Veuillez créer un compte Jexury en utilisant Google';
-    public const FACEBOOK_LOGIN_NO_ACCOUNT = 'Vous n\'avez pas de compte Facebook enregistré. Veuillez créer un compte Jexury en utilisant Facebook';
-    public const LOCAL_ACCOUNT = 'Vous avez déjà créé un compte Jexury. Veuillez vous connecter à votre compte Jexury en introduisant votre email et mot de passe.';
+    public const USING_FACEBOOK_ACCOUNT = 'Vous avez déjà créé un compte en utilisant Facebook. Veuillez vous connecter à votre compte existant en utilisant Facebook.';
+    public const USING_GOOGLE_ACCOUNT = 'Vous avez déjà créé un compte  en utilisant Google. Veuillez vous connecter à votre compte  existant en utilisant Google.';
+    public const GOOGLE_LOGIN_NO_ACCOUNT = 'Vous n\'avez pas de compte Google enregistré. Veuillez créer un compte en utilisant Google';
+    public const FACEBOOK_LOGIN_NO_ACCOUNT = 'Vous n\'avez pas de compte Facebook enregistré. Veuillez créer un compte  en utilisant Facebook';
+    public const LOCAL_ACCOUNT = 'Vous avez déjà créé un compte. Veuillez vous connecter à votre compte en introduisant votre email et mot de passe.';
     public const ALREADY_APPLIED = 'Vous avez déjà un plan en cours de traitement. Vous pouvez annuler le plan et recommencer depuis votre tableau de bord';
     public const FILE_NOT_VALID = 'Veuillez choisir une image ou un fichier PDF s\'il vous plait';
     public const UNHANDLED_IMAGE_EXTENSION = 'Le type de l\'image n\'est pas autorisé';
