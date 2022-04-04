@@ -45,6 +45,7 @@ class GoogleService extends AuthService
             'last_name' => $this->payload['family_name'],
             'avatar' => $this->payload['picture'],
             'last_seen_at' => Carbon::now(),
+            'status' => 'connected',
             'updated_at' => DB::raw('updated_at')
         ]);
         User::reguard();

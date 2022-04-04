@@ -79,14 +79,16 @@ class FacebookService extends AuthService
     private function updateUserDataBeforeLogging()
     {
         $body = $this->payload->getDecodedBody();
+        User::unguard();
         User::where(['id' => $this->user->id])->update([
             'first_name' => $body['first_name'],
             'last_name' => $body['last_name'],
-            'email' => $body['email'],
             'avatar' => $body['picture']['data']['url'],
             'last_seen_at' => Carbon::now(),
+            'status' => 'connected',
             'updated_at' => DB::raw('updated_at')
         ]);
+        User::reguard();
     }
 
     private function recordUser()
