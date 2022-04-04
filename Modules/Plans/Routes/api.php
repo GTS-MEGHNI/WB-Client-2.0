@@ -16,7 +16,7 @@ use Modules\Plans\Http\Controllers\PlansController;
 
 use Illuminate\Support\Facades\Route;
 
-Route::group(['prefix' => 'coaching/plans'], function () {
+Route::group(['prefix' => 'coaching/plans', 'middleware' => 'UpdateLastSeenAtMiddleware'], function () {
     Route::post('create', [PlansController::class, 'create']);
     Route::post('update', [PlansController::class, 'update']);
     Route::post('delete', [PlansController::class, 'delete']);
