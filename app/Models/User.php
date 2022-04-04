@@ -45,6 +45,7 @@ class User extends Authenticatable
     protected $primaryKey = 'id';
     public $incrementing = false;
 
+    protected $fillable = ['status', 'last_seen_at', 'updated_at'];
 
     public function contact(): hasOne
     {
