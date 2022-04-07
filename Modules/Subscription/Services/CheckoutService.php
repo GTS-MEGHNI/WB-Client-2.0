@@ -106,7 +106,8 @@ class CheckoutService extends SubscriptionService
             'medication' => $health['hasPhysicalHealthIssues'] == true ?
                 ($health['isTakingMedications'] == true ? $health['medications'] : null) : null,
             'has_mental_issues' => $health['hasMentalHealthIssues'],
-            'mental_state' => $health['mentalHealthState'],
+            'mental_state' => $health['hasMentalHealthIssues'] == true ?
+                $health['mentalHealthState'] : null,
             'is_pregnant' => $is_pregnant,
             'pregnancy_month' => $is_pregnant == true ? $health['pregnancyMonth'] : null,
             'breast_feeding' => $breast_feeding,
