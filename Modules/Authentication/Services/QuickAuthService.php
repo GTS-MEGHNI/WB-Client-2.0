@@ -36,10 +36,10 @@ class QuickAuthService extends AuthService
     public function record(array $payload)
     {
         /* purge log row */
-        RegisterLog::find(request()->bearerToken())->delete();
         request()->get('row')->password = bcrypt($payload['password']);
         request()->get('row')->save();
         $this->user = User::addNewUser(request()->get('row')->toArray());
+        RegisterLog::find(request()->bearerToken())->delete();
     }
 
     /**

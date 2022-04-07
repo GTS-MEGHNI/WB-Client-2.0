@@ -15,12 +15,12 @@ class CreatePasswordRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @noinspection PhpArrayShapeAttributeCanBeAddedInspection
      */
-    #[ArrayShape(['email' => "string[]", 'password' => "string[]"])]
     public function rules(): array
     {
         return [
-            'password' => array('required', 'string', 'regex:' . GlobalRegex::PASSWORD_PATTERN),
+            'password' => ['required', 'string', 'regex:' . GlobalRegex::PASSWORD_PATTERN],
         ];
     }
 
