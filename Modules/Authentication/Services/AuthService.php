@@ -38,6 +38,7 @@ class AuthService
      */
     public function respondWithToken(): array
     {
+        dd($this->user);
         return $this->user->resource();
     }
 }
