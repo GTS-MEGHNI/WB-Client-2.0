@@ -9,18 +9,18 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Modules\Authentication\Rules\FacebookAccountRule;
 use Modules\Authentication\Rules\GoogleAccountRule;
 
-
 class RecoverSubmitMailRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @noinspection PhpArrayShapeAttributeCanBeAddedInspection
      */
     public function rules(): array
     {
         return [
-            'email' => array('required', 'email:rfc,dns', 'exists:App\Models\User',
+            'email' => array('required', 'email:rfc,dns', 'exists:App\Models\User,email',
                 new FacebookAccountRule(), new GoogleAccountRule())
         ];
     }
@@ -39,9 +39,10 @@ class RecoverSubmitMailRequest extends FormRequest
     {
         throw new HttpResponseException(
             response()->json(Responses::DebugResponseError($validator->messages(),
-                $validator->messages()->first()),));
+                $validator->messages()->first())));
     }
 
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
     public function messages(): array
     {
         return [
