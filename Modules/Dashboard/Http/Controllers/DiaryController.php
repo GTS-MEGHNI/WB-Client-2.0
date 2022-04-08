@@ -21,7 +21,7 @@ class DiaryController extends Controller
     public function canCreate(): JsonResponse
     {
         return response()->json([
-            'canCreate' => true //(new DiaryService())->canWrite()
+            'canCreate' => (new DiaryService())->canWrite()
         ]);
     }
 
