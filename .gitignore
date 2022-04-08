@@ -3,6 +3,7 @@
 /public/payments
 /public/progresses
 /public/storage
+/public/users
 /storage/*.key
 /vendor
 .env
