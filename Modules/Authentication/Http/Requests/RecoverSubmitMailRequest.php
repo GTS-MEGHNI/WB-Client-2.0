@@ -21,7 +21,7 @@ class RecoverSubmitMailRequest extends FormRequest
     {
         return [
             'email' => array('required', 'email:rfc,dns', 'exists:App\Models\User,email',
-                new FacebookAccountRule(), new GoogleAccountRule())
+                /*new FacebookAccountRule(), new GoogleAccountRule()*/)
         ];
     }
 
