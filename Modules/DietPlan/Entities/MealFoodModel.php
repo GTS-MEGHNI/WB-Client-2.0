@@ -145,5 +145,5 @@ class MealFoodModel extends Model
         return new Attribute(
             get: fn($value) => $value === null ? null : boolval($value)
         );
-
+    }
 }
