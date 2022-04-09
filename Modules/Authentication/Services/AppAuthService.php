@@ -18,13 +18,14 @@ class AppAuthService extends AuthService
     {
         $this->verifyAccountExistence($credentials['email']);
 
-        if ($this->facebook_account)
+        /*if ($this->facebook_account)
             throw new HttpResponseException(
                 response()->json(Responses::emptyDebugResponseError(Responses::USING_FACEBOOK_ACCOUNT)));
 
         if ($this->google_account)
             throw new HttpResponseException(
                 response()->json(Responses::emptyDebugResponseError(Responses::USING_GOOGLE_ACCOUNT)));
+        */
 
         if (!Hash::check($credentials['password'], $this->user->password))
             throw new HttpResponseException(

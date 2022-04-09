@@ -2,6 +2,7 @@
 
 namespace Modules\Authentication\Http\Requests;
 
+use App\GlobalRegex;
 use App\Responses;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -13,12 +14,13 @@ class AppAuthRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
      * @return array
+     * @noinspection PhpArrayShapeAttributeCanBeAddedInspection
      */
     public function rules(): array
     {
         return [
-            'email' => array('required', 'email:rfc,dns', 'exists:App\Models\User'),
-            'password' => array('required', 'between:8,20')
+            'email' => ['required', 'email:rfc,dns', 'exists:App\Models\User,email'],
+            'password' => ['required', 'regex:'.GlobalRegex::PASSWORD_PATTERN]
         ];
     }
 
@@ -40,6 +42,7 @@ class AppAuthRequest extends FormRequest
         return true;
     }
 
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
     public function messages(): array
     {
         return [
