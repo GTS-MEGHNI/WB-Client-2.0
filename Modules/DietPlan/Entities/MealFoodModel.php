@@ -73,7 +73,8 @@ class MealFoodModel extends Model
         return $this->belongsTo(RecipeModel::class, 'native_food_id', 'id');
     }
 
-    public function meal() : BelongsTo {
+    public function meal(): BelongsTo
+    {
         return $this->belongsTo(DayMealModel::class, 'meal_id', 'id');
     }
 
@@ -139,9 +140,10 @@ class MealFoodModel extends Model
         ];
     }
 
-    public function consumed() : Attribute {
+    public function consumed(): Attribute
+    {
         return new Attribute(
-            get: fn($value) => boolval($value)
+            get: fn($value) => $value === null ? null : boolval($value)
         );
-    }
+
 }
