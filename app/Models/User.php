@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Auth;
+use App\Dictionary;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -116,6 +118,8 @@ class User extends Authenticatable
             'social_id' => Arr::has($payload, 'social_id') ? $payload['social_id'] : null,
             'avatar' => Arr::has($payload, 'avatar') ? $payload['avatar'] : null,
             'provider' => Arr::has($payload, 'provider') ? $payload['provider'] : null,
+            'last_seen_at' => Carbon::now(),
+            'status' => 'connected',
         ]);
         UserContactModel::forceCreate(['id' => $user->id]);
         UserSettingsModel::forceCreate([
