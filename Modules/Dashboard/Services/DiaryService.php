@@ -118,7 +118,6 @@ class DiaryService
         if ($latest_diary == null)
             return true;
         $tomorrow = Carbon::parse($latest_diary->created_at)->addDay()->startOfDay();
-        dd($tomorrow);
         return Carbon::now()->greaterThanOrEqualTo($tomorrow);
     }
 
