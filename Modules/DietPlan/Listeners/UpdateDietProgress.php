@@ -76,14 +76,10 @@ class UpdateDietProgress
         $segment = $day->segment;
         $record_metric_date = Carbon::parse($segment->start_date)->addDays($day->order - 1);
         $row = DietProgressModel::where(['date' => $record_metric_date->timestamp])->first();
-        $row->protein_consumed = $row->protein_consumed -
-            $facts_calculator_service->consumed_protein;
-        $row->carbs_consumed =  $row->carbs_consumed -
-            $facts_calculator_service->consumed_carbs;
-        $row->fat_consumed = $row->fat_consumed -
-            $facts_calculator_service->consumed_fat;
-        $row->calories_consumed = $row->calories_consumed -
-            $facts_calculator_service->consumed_calories;
+        $row->decrement('protein_consumed', $facts_calculator_service->consumed_protein);
+        $row->decrement('fat_consumed', $facts_calculator_service->consumed_fat);
+        $row->decrement('calories_consumed', $facts_calculator_service->consumed_calories);
+        $row->decrement('carbs_consumed', $facts_calculator_service->consumed_carbs);
         $row->save();
     }
 }
