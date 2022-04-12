@@ -84,7 +84,8 @@ class SubscriptionModel extends Model
 
     public function diaries(): HasMany
     {
-        return $this->hasMany(DiaryModel::class, 'order_id')->orderBy('id');
+        return $this->hasMany(DiaryModel::class, 'order_id')
+            ->orderBy('id', 'desc');
     }
 
     /** @noinspection PhpUnused */
