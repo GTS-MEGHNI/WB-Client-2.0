@@ -2,7 +2,6 @@
 
 namespace Modules\DietPlan\Traits;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Modules\DietPlan\Entities\SegmentDayModel;
 use Modules\DietPlan\Entities\CalendarSegmentModel;
 use Modules\DietPlan\Services\FoodConsumption\DayConsumptionService;
@@ -12,7 +11,6 @@ use Modules\DietPlan\Services\FoodConsumption\SegmentConsumptionService;
 trait FoodConsumptionStats
 {
 
-    #[ArrayShape(['calories' => "array[]", 'protein' => "\array[][]", 'carbs' => "\array[][]", 'fat' => "\array[][]"])]
     private function getStats(): array
     {
         if ($this instanceof CalendarSegmentModel) {

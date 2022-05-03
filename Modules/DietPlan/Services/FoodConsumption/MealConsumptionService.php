@@ -2,7 +2,6 @@
 
 namespace Modules\DietPlan\Services\FoodConsumption;
 
-use JetBrains\PhpStorm\ArrayShape;
 use Modules\DietPlan\Entities\DayMealModel;
 use Modules\DietPlan\Interfaces\FoodConsumption;
 
@@ -15,7 +14,7 @@ class MealConsumptionService extends ConsumptionService implements FoodConsumpti
         $this->collation = $collation;
     }
 
-    #[ArrayShape(['calories' => "array[]", 'protein' => "\array[][]", 'carbs' => "\array[][]", 'fat' => "\array[][]"])]
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
     public function getConsumption() : array {
         $this->calculate();
         return $this->getConsumptionsAsArray();
@@ -26,7 +25,7 @@ class MealConsumptionService extends ConsumptionService implements FoodConsumpti
         $meals = $this->collation->foods;
         foreach ($meals as $meal) {
             $meal_consumption = new FoodConsumptionService($meal);
-            $meal_consumption->calculate();
+            $meal_consumption->getConsumptions();
             $this->sum($meal_consumption);
         }
     }

@@ -23,6 +23,23 @@ class FoodConsumptionService extends ConsumptionService implements FoodConsumpti
         $this->meal = $meal;
     }
 
+    public function getConsumptions()
+    {
+        FactModel::unguard();
+        $facts = $this->meal->measurement->facts;
+        FactModel::reguard();
+        $this->total_fat = $facts->fat;
+        $this->total_protein = $facts->protein;
+        $this->total_carbs = $facts->carbs;
+        $this->total_calories = $facts->calories;
+        if ($this->meal->consumed === true) {
+            $this->consumed_fat = $facts->fat;
+            $this->consumed_protein = $facts->protein;
+            $this->consumed_carbs = $facts->carbs;
+            $this->consumed_calories = $facts->calories;
+        }
+    }
+
     function calculate(): void
     {
         $this->calculateFacts();
