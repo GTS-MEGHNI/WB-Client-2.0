@@ -3,6 +3,7 @@
 namespace Modules\DietPlan\Services;
 
 use App\Utility;
+use Illuminate\Support\Facades\Cache;
 use Modules\DietPlan\Entities\CalendarModel;
 use Modules\DietPlan\Entities\CalendarSegmentModel;
 use Modules\DietPlan\Entities\DayMealModel;
@@ -30,8 +31,12 @@ class DietPlanService
      */
     public function getPlan(): array
     {
-        $order_id = $this->getUserLatestOrder()->id;
-        return CalendarModel::where(['order_id' => $order_id])->first()->toArray();
+        $subscription_id = $this->getUserLatestOrder()->id;
+        if(Cache::has($subscription_id))
+            Cache::put($subscription_id,
+                CalendarModel::where(['order_id' => $this->getUserLatestOrder()->id])
+                    ->first()->toArray());
+        return Cache::get($subscription_id);
     }
 
     public function markAsConsumed(): array
