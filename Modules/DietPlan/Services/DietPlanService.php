@@ -32,7 +32,7 @@ class DietPlanService
     public function getPlan(): array
     {
         $subscription_id = $this->getUserLatestOrder()->id;
-        if(Cache::has($subscription_id))
+        if(!Cache::has($subscription_id))
             Cache::put($subscription_id,
                 CalendarModel::where(['order_id' => $this->getUserLatestOrder()->id])
                     ->first()->toArray());
