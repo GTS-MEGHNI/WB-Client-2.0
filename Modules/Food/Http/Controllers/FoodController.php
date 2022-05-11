@@ -4,7 +4,6 @@ namespace Modules\Food\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use Modules\Food\Http\Requests\GetFoodRequest;
 use Modules\Food\Http\Requests\SearchFoodRequest;
 use Modules\Food\Services\FoodSearchService;
 use Modules\Food\Services\FoodService;
@@ -20,7 +19,7 @@ class FoodController extends Controller
     /**
      * @throws Throwable
      */
-    public function get(GetFoodRequest $request, FoodService $service): JsonResponse
+    public function get(FoodService $service): JsonResponse
     {
         return response()->json($service->get());
     }

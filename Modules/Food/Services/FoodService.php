@@ -2,6 +2,9 @@
 
 namespace Modules\Food\Services;
 
+use App\Dictionary;
+use Modules\Food\Entities\IngredientModel;
+use Modules\Food\Entities\RecipeModel;
 use Modules\Food\Traits\Food;
 use Throwable;
 
@@ -15,7 +18,11 @@ class FoodService
      */
     public function get(): array
     {
-        return request()->get('food')->details();
+        $food = match ($this->getFoodTypeByID(request()->route('foodId'))) {
+            Dictionary::RECIPE => RecipeModel::find(request()->route('foodId')),
+            Dictionary::INGREDIENT => IngredientModel::find(request()->route('foodId')),
+        };
+        return $food->details();
     }
 
 }

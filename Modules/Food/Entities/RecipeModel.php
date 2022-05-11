@@ -13,8 +13,8 @@ use JetBrains\PhpStorm\ArrayShape;
  * @method static join(... $params)
  * @method static select(string[] $array)
  * @method static forceCreate(array $array)
- * @method static find(array $array)
  * @method static where(... $param)
+ * @method static find(\Illuminate\Routing\Route|object|string|null $route)
  * @property mixed $name
  * @property mixed $thumbnail
  * @property mixed $full

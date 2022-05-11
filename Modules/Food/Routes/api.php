@@ -16,8 +16,8 @@ use Modules\Food\Http\Controllers\MeasurementController;
 |
 */
 
-Route::group(['prefix' => 'food', 'middleware' => 'TokenValidation', 'UpdateLastSeenAtMiddleware'], function () {
-    Route::post('get', [FoodController::class, 'get']);
+Route::group(['prefix' => 'foods', 'middleware' => 'TokenValidation', 'UpdateLastSeenAtMiddleware'], function () {
+    Route::post('{foodId}', [FoodController::class, 'get']);
     Route::post('search', [FoodController::class, 'search'])->name('foodSearch');
     Route::group(['prefix' => 'ingredient'], function () {
         Route::post('create', [IngredientController::class, 'create']);
