@@ -40,7 +40,9 @@ class DietPlanService
         }
         if(!Cache::has($subscription_id))
             Cache::put($subscription_id, $calendar->toArray());
-        return Cache::get($subscription_id);
+        //return Cache::get($subscription_id);
+        return CalendarModel::where(['order_id' => $this->getUserLatestOrder()->id])
+            ->first()->toArray();
     }
 
     public function markAsConsumed(): array
