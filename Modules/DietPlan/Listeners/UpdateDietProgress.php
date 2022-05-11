@@ -3,13 +3,14 @@
 namespace Modules\DietPlan\Listeners;
 
 use Carbon\Carbon;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Modules\Dashboard\Entities\DietProgressModel;
 use Modules\DietPlan\Events\FoodConsumed;
 use Modules\DietPlan\Events\FoodNotConsumed;
 use Modules\DietPlan\Services\FoodConsumption\DayConsumptionService;
 use Modules\DietPlan\Services\FoodConsumption\FoodConsumptionService;
 
-class UpdateDietProgress
+class UpdateDietProgress implements ShouldQueue
 {
     /**
      * Create the event listener.
