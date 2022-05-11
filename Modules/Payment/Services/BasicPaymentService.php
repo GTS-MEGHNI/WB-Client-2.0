@@ -25,9 +25,12 @@ class BasicPaymentService
         $path = Utility::getUserId() . '/' . Str::random(50) . '/' .
             Str::random(20) . '.' . request()->get('mime');
         Storage::disk('payments')->deleteDirectory(Utility::getUserId());
-        Storage::disk('payments')->makeDirectory(Utility::getUserId());
         Storage::disk('payments')->put($path, $content);
         $subscription = Utility::getUserOngoingSubscription();
+        ReceiptPaymentModel::where([
+            'user_id' => Utility::getUserId(),
+            'subscription_id' => $subscription->id
+        ])->delete();
         ReceiptPaymentModel::forceCreate([
             'id' => uniqid(),
             'user_id' => Utility::getUserId(),

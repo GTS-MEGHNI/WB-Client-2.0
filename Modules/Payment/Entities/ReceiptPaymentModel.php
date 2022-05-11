@@ -12,6 +12,7 @@ use JetBrains\PhpStorm\Pure;
 /**
  * @method static forceCreate(array $array)
  * @method static find(string $id)
+ * @method static where(array $array)
  * @property mixed $payment_method
  * @property mixed $id
  * @property mixed $receipt_path
