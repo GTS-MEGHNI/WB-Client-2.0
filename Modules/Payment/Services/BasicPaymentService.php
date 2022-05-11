@@ -24,7 +24,6 @@ class BasicPaymentService
         $content = base64_decode($payload['data']);
         $path = Utility::getUserId() . '/' . Str::random(50) . '/' .
             Str::random(20) . '.' . request()->get('mime');
-        Storage::disk('payments')->deleteDirectory(Utility::getUserId());
         Storage::disk('payments')->put($path, $content);
         $subscription = Utility::getUserOngoingSubscription();
         ReceiptPaymentModel::forceCreate([
