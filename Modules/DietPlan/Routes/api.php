@@ -24,4 +24,4 @@ Route::group(['prefix' => 'coaching/diet-plan', 'middleware' => 'TokenValidation
     Route::get('config', [DietPlanController::class, 'getConfig']);
 });
 
-Route::get('cache-calendar', [DietPlanController::class, 'cache']);
+Route::get('cache-calendar/{subscription_id}', [DietPlanController::class, 'cache']);

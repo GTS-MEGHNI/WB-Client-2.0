@@ -45,6 +45,6 @@ class DietPlanController extends Controller
     }
 
     public function cache(DietPlanService $service) {
-        $service->cacheCalendar();
+        $service->cacheCalendar(request()->route('subscription_id'));
     }
 }
