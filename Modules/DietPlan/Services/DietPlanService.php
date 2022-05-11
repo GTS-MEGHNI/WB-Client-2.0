@@ -2,7 +2,6 @@
 
 namespace Modules\DietPlan\Services;
 
-use App\Utility;
 use Illuminate\Support\Facades\Cache;
 use Modules\DietPlan\Entities\CalendarModel;
 use Modules\DietPlan\Entities\CalendarSegmentModel;
@@ -81,12 +80,13 @@ class DietPlanService
         return DietConfigModel::where(['order_id' => $order_id])->first()->toArray();
     }
 
+    /** @noinspection PhpArrayShapeAttributeCanBeAddedInspection */
     private function response(): array
     {
         $meal = $this->food->meal;
         $day = $meal->day;
         $segment = $day->segment;
-        $response = [
+        return [
             'id' => $this->food->id,
             'order' => $this->food->order,
             'type' => $this->getServedFoodType($this->food->native_food_id),
@@ -113,7 +113,6 @@ class DietPlanService
                 ]
             ]
         ];
-        return Utility::remove_array_shape_tag($response);
     }
 
 }
