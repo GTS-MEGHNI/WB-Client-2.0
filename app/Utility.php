@@ -76,5 +76,25 @@ class Utility
         return (new self())->getUserLatestOrder();
     }
 
+    public static function filterMeasurement(array $measurements): array
+    {
+        $array = [];
+        $response = [];
+        foreach ($measurements as $measurement) {
+            if (!self::IsDuplicated($array, $measurement['quantity']))
+                array_push($response, $measurement);
+            array_push($array, $measurement['quantity']);
+        }
+        return $response;
+    }
+
+    private static function IsDuplicated(array $array, array $measurement): bool
+    {
+        foreach ($array as $item)
+            if ($item['unit'] == $measurement['unit'] && $item['amount'] == $measurement['amount'])
+                return true;
+        return false;
+    }
+
 
 }

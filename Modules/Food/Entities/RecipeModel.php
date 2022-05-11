@@ -14,7 +14,7 @@ use JetBrains\PhpStorm\ArrayShape;
  * @method static select(string[] $array)
  * @method static forceCreate(array $array)
  * @method static where(... $param)
- * @method static find(\Illuminate\Routing\Route|object|string|null $route)
+ * @method static find(string $recipe_id)
  * @property mixed $name
  * @property mixed $thumbnail
  * @property mixed $full
