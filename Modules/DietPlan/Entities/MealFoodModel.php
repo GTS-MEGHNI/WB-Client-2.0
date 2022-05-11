@@ -91,7 +91,9 @@ class MealFoodModel extends Model
             //'type' => $this->getServedFoodType($this->native_food_id),
             'id' => $this->id,
             'nativeId' => $this->native_food_id,
-            'hasBeenConsumed' => $this->consumed
+            'hasBeenConsumed' => $this->consumed,
+            'notes' => $this->notes?->toArray(),
+            'measurement' => (new MeasurementCalculatorService($this))->getMeasurement()
         ];
     }
 
