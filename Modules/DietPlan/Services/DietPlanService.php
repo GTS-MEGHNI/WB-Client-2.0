@@ -31,9 +31,11 @@ class DietPlanService
     public function getPlan(): array
     {
         $subscription_id = $this->getUserLatestOrder()->id;
-        if(!Cache::has($subscription_id))
+        /*if(!Cache::has($subscription_id))
             $this->cacheCalendar($subscription_id);
-        return Cache::get($subscription_id);
+        return Cache::get($subscription_id);*/
+        return CalendarModel::where(['order_id' => $subscription_id])
+            ->first()->toArray();
     }
 
     public function cacheCalendar(string $subscription_id) {
