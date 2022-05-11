@@ -43,4 +43,8 @@ class DietPlanController extends Controller
     {
         return response()->json($service->getConfig());
     }
+
+    public function cache(DietPlanService $service) {
+        $service->cacheCalendar();
+    }
 }

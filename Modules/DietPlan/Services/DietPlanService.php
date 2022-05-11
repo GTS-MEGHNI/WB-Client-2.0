@@ -31,18 +31,15 @@ class DietPlanService
     public function getPlan(): array
     {
         $subscription_id = $this->getUserLatestOrder()->id;
-        $calendar = CalendarModel::where(['order_id' => $this->getUserLatestOrder()->id])
-            ->first();
-        if($calendar->new_publish) {
-            Cache::forget($subscription_id);
-            $calendar->new_publish = false;
-            $calendar->save();
-        }
         if(!Cache::has($subscription_id))
-            Cache::put($subscription_id, $calendar->toArray());
-        //return Cache::get($subscription_id);
-        return CalendarModel::where(['order_id' => $this->getUserLatestOrder()->id])
-            ->first()->toArray();
+            $this->cacheCalendar($subscription_id);
+        return Cache::get($subscription_id);
+    }
+
+    public function cacheCalendar(string $subscription_id) {
+        $calendar = CalendarModel::where(['order_id' => $subscription_id])
+            ->first();
+        Cache::put($subscription_id, $calendar->toArray());
     }
 
     public function markAsConsumed(): array
