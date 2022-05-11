@@ -88,7 +88,7 @@ class MealFoodModel extends Model
     {
         return [
             'order' => $this->order,
-            //'type' => $this->getServedFoodType($this->native_food_id),
+            'type' => $this->getServedFoodType($this->native_food_id),
             'id' => $this->id,
             'nativeId' => $this->native_food_id,
             'hasBeenConsumed' => $this->consumed,
